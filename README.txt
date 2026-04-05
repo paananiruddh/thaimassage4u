@@ -1,16 +1,11 @@
-Thai Massage For U final money version
+Thai Massage For U finished website
 
 Included:
-- Premium responsive design from the latest live version
-- Homepage hero image integration preserved
+- homepage hero rebuilt using a combined image with integrated text
+- separate Book and Call buttons over the hero
+- proper photo-based service images
+- photo-based suburb thumbnails across the site
+- contact page copy rewritten to sound like a live business
+- correct phone number: +61 491 951 779
 - ads.txt preserved with ca-pub-3348774393369683
-- 24 suburb pages with suburb-specific image files
-- Home, Services, About, FAQ, Contact
-- Privacy Policy and Terms
-- 6 article pages for stronger content depth
-- Local images folder with hero image, room image, service visuals and suburb-specific visuals
-- Sitemap, robots.txt, CNAME
-
-Notes:
-- Booking is phone and email based
-- Email currently uses bookings@thaimassageforu.com
+- suburb pages, articles, FAQ, privacy, terms, sitemap, robots and CNAME
