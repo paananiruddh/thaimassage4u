@@ -11,6 +11,6 @@ Included:
 - Direct booking button using phone number
 
 Important:
-- AdSense approval cannot be guaranteed. This build is structured to avoid common rejection factors such as thin content, weak navigation, empty pages and adult-style presentation.
 - Booking is currently phone and email based.
 - Email currently uses bookings@thaimassageforu.com. Change it if needed.
+- The homepage now uses the generated hero image: images/hero-homepage.png
