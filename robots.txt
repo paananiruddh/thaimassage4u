@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thaimassageforu.com/sitemap.xml
