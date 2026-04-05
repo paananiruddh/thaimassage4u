@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+    <rect width="1200" height="760" fill="#f7f3ed"/>
+    <circle cx="452" cy="326" r="120" fill="#d6b08a" opacity=".55"/>
+    <circle cx="676" cy="532" r="150" fill="#d6b08a" opacity=".45"/>
+    <rect x="100" y="110" width="1000" height="540" rx="34" fill="#ffffff" stroke="#e6ddd3" stroke-width="3"/>
+    <rect x="160" y="210" width="620" height="220" rx="26" fill="#8e6848" opacity=".88"/>
+    <rect x="820" y="220" width="180" height="180" rx="22" fill="#d6b08a"/>
+    <rect x="190" y="470" width="360" height="24" rx="12" fill="#e6ddd3"/>
+    <rect x="190" y="515" width="280" height="24" rx="12" fill="#e6ddd3"/>
+    <text x="160" y="175" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#8e6848">Camberwell</text>
+    <text x="160" y="585" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#6b625a">Thai massage for the junction precinct and commuter routes</text>
+    </svg>

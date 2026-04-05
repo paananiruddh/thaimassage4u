@@ -1,27 +1,16 @@
-Thai Massage For U multi-page site
+Thai Massage For U final money version
 
-Files included:
-- index.html
-- thai-massage-melbourne.html
-- relaxation-massage-melbourne.html
-- foot-massage-melbourne.html
-- couples-massage-melbourne.html
-- suburbs.html
-- melbourne-cbd-thai-massage.html
-- southbank-thai-massage.html
-- docklands-thai-massage.html
-- richmond-thai-massage.html
-- st-kilda-thai-massage.html
-- faq.html
-- contact.html
-- styles.css
-- script.js
+Included:
+- Premium responsive design from the latest live version
+- Homepage hero image integration preserved
+- ads.txt preserved with ca-pub-3348774393369683
+- 24 suburb pages with suburb-specific image files
+- Home, Services, About, FAQ, Contact
+- Privacy Policy and Terms
+- 6 article pages for stronger content depth
+- Local images folder with hero image, room image, service visuals and suburb-specific visuals
+- Sitemap, robots.txt, CNAME
 
-Before launch:
-1. Replace all placeholder contact details.
-2. Replace prices with real ones.
-3. Add your real booking link from Calendly or Fresha.
-4. Replace stock image use with your own licensed imagery.
-5. Set your web host to use index.html as the homepage.
-
-6. Review the stock photo URLs and swap them if you want a more specific visual style.
+Notes:
+- Booking is phone and email based
+- Email currently uses bookings@thaimassageforu.com

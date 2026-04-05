@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+    <rect width="1200" height="760" fill="#f3ede6"/>
+    <circle cx="231" cy="183" r="120" fill="#cfb094" opacity=".55"/>
+    <circle cx="923" cy="521" r="150" fill="#cfb094" opacity=".45"/>
+    <rect x="100" y="110" width="1000" height="540" rx="34" fill="#ffffff" stroke="#e6ddd3" stroke-width="3"/>
+    <rect x="160" y="210" width="620" height="220" rx="26" fill="#815f42" opacity=".88"/>
+    <rect x="820" y="220" width="180" height="180" rx="22" fill="#cfb094"/>
+    <rect x="190" y="470" width="360" height="24" rx="12" fill="#e6ddd3"/>
+    <rect x="190" y="515" width="280" height="24" rx="12" fill="#e6ddd3"/>
+    <text x="160" y="175" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#815f42">Docklands</text>
+    <text x="160" y="585" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#6b625a">Thai massage for the waterfront apartments and Marvel Stadium</text>
+    </svg>
