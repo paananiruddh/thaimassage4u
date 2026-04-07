@@ -4,225 +4,109 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#5b7cff">
-<title>Melbourne Massage Services | Massage Services For You</title>
-<meta name="description" content="Explore massage services across selected Melbourne suburbs with clear service guidance, practical FAQs, and direct contact options.">
+<title>Melbourne + Sydney Massage Directory | Massage Directory AU</title>
+<meta name="description" content="Static Melbourne and Sydney massage directory with city, suburb, category, price, and booking-style filters.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Melbourne Massage Services | Massage Services For You">
-<meta property="og:description" content="Explore massage services across selected Melbourne suburbs with clear service guidance, practical FAQs, and direct contact options.">
-<meta property="og:image" content="https://thaimassageforu.com/images/og-cover.jpg">
-<meta property="og:url" content="https://thaimassageforu.com/">
-<link rel="canonical" href="https://thaimassageforu.com/">
 <link rel="icon" href="images/logo.png">
-<link rel="preload" as="image" href="images/hero-home.jpg">
+<link rel="canonical" href="https://thaimassageforu.com/">
 <link rel="stylesheet" href="styles.css">
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"HealthAndBeautyBusiness",
-  "name":"Massage Services For You",
-  "url":"https://thaimassageforu.com/",
-  "telephone":"+61 491 951 779",
-  "email":"bookings@thaimassageforu.com",
-  "image":"https://thaimassageforu.com/images/og-cover.jpg",
-  "priceRange":"$$",
-  "description":"Professional massage services in Melbourne with calm rooms, thoughtful treatment options, and suburb-based service pages.",
-  "areaServed":["Melbourne CBD","Armadale","Toorak","South Yarra","Richmond","Brighton","St Kilda"]
-}
-</script>
-
-
+<script src="js/directory.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Services For You</span></a>
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="current" href="index.html">Home</a>
-<a class="" href="services.html">Services</a>
-<a class="" href="locations.html">Locations</a>
-<a class="" href="about.html">About</a>
-<a class="" href="affiliate.html">Affiliate</a>
-<a class="" href="faq.html">FAQ</a>
-<a class="" href="contact.html">Contact</a>
+      <a class="" href="listings.html">Browse</a>
+      <a class="" href="city-melbourne.html">Melbourne</a>
+      <a class="" href="city-sydney.html">Sydney</a>
+      <a class="" href="claim-listing.html">Claim Listing</a>
+      <a class="" href="editorial-policy.html">Editorial Policy</a>
     </nav>
   </div>
 </header>
 
-<main id="main">
-  <section class="page-hero-image">
-    <div class="container">
-      <img class="hero-visual" src="images/hero-home.jpg" alt="Calming massage treatment room with soft natural light">
-    </div>
-  </section>
-
-  <section class="hero-copy">
+<main id="main" data-page="home">
+  <section class="section">
     <div class="narrow">
-      <span class="eyebrow">Melbourne massage services</span>
-      <h1>Melbourne massage services with clear, practical guidance</h1>
-      <p class="lead">This site is built to help you decide what to book, where to book, and how to enquire without guesswork. Service pages explain the treatment style in plain language, suburb pages stay focused on real local context, and contact options are easy to find.</p>
+      <span class="eyebrow">Melbourne + Sydney directory</span>
+      <h1>Find massage listings by city, suburb, and category</h1>
+      <p class="lead">This directory is static and manually curated for clear browsing. Use filters to narrow by city, suburb, category, price band, and booking style.</p>
       <div class="button-row">
-        <a class="btn btn-primary" href="services.html">Explore services</a>
-        <a class="btn btn-secondary" href="contact.html">Send SMS or email</a>
-      </div>
-      <div class="kicker-row">
-        <span>Clear service explanations</span>
-        <span>Selected Melbourne suburbs</span>
-        <span>Direct contact details</span>
-      </div>
-      <div class="meta-bar">
-        <div class="meta-item"><strong>Service-first structure</strong><span class="small">Built to answer booking questions quickly.</span></div>
-        <div class="meta-item"><strong>Location coverage</strong><span class="small">Focused on selected Melbourne suburbs.</span></div>
-        <div class="meta-item"><strong>Helpful support pages</strong><span class="small">About, FAQ, and Contact are all easy to reach.</span></div>
+        <a class="btn btn-primary" href="listings.html">Browse all listings</a>
+        <a class="btn btn-secondary" href="claim-listing.html">Claim a listing</a>
       </div>
     </div>
   </section>
 
   <section class="section alt">
-    <div class="container grid-3">
-      <div class="card service-card">
-        <img src="images/service-relax.jpg" alt="Relaxation massage treatment room">
-        <h3><a href="services.html">Relaxation sessions</a></h3>
-        <p>Designed for people who want to slow down after a demanding week. These sessions prioritise calm pacing, steady pressure, and a quieter treatment flow.</p>
-      </div>
-      <div class="card service-card">
-        <img src="images/service-deep.jpg" alt="Professional massage treatment in progress">
-        <h3><a href="services.html">Focused deep tissue work</a></h3>
-        <p>For built-up tension through common problem areas such as shoulders, upper back, hips, or legs. The approach is targeted and controlled, not rushed or overly aggressive.</p>
-      </div>
-      <div class="card service-card">
-        <img src="images/service-signature.jpg" alt="Warm premium massage room prepared for a session">
-        <h3><a href="services.html">Blended sessions</a></h3>
-        <p>A balanced option for people who want both relaxation and focused attention in key areas. Useful if you are not sure which single category is the best fit.</p>
-      </div>
+    <div class="container">
+      <h2>Quick filters</h2>
+      <form class="filter-panel" action="listings.html" method="get">
+        <div class="filter-grid">
+          <label>City<select name="city"><option value="">All cities</option><option value="melbourne">Melbourne</option><option value="sydney">Sydney</option></select></label>
+          <label>Suburb<input type="text" name="suburb" placeholder="e.g. Richmond"></label>
+          <label>Category<select name="category"><option value="">All categories</option><option value="relaxation">Relaxation</option><option value="deep-tissue">Deep Tissue</option><option value="blended">Blended</option><option value="remedial">Remedial</option><option value="sports">Sports</option></select></label>
+          <label>Price band<select name="price_band"><option value="">Any</option><option value="$">$</option><option value="$$">$$</option><option value="$$$">$$$</option><option value="$$$$">$$$$</option><option value="unspecified">Unspecified</option></select></label>
+          <label>Booking style<select name="booking_style"><option value="">Any</option><option value="sms-email">SMS/Email</option><option value="phone-call">Phone call</option><option value="online-form">Online form</option><option value="online-booking">Online booking</option><option value="walk-in-enquiry">Walk-in enquiry</option></select></label>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-primary" type="submit">Apply filters</button>
+          <a class="btn btn-secondary" href="listings.html">Reset</a>
+        </div>
+      </form>
     </div>
   </section>
 
   <section class="section">
     <div class="container grid-2">
-      <div>
-        <h2>How to use this site</h2>
-        <p>Start with the <a href="services.html">Services</a> page if you are choosing between treatment styles. Visit <a href="locations.html">Locations</a> if you want a suburb-specific page. Use <a href="faq.html">FAQ</a> for practical questions, then move to <a href="contact.html">Contact</a> when you are ready to enquire.</p>
-        <p>Every core page is written to be useful on its own and to connect naturally with the next step. The goal is to keep decision-making simple rather than forcing you to read through repeated or generic copy.</p>
-        <div class="notice">Important details confirmed: preferred contact method is SMS or email, opening hours are 9 am to 6 pm, and payment methods accepted are Cash or PayID.</div>
+      <div class="card">
+        <h2>Browse by city</h2>
+        <ul class="ticks"><li><a href="city-melbourne.html">Melbourne directory page</a></li><li><a href="city-sydney.html">Sydney directory page</a></li></ul>
       </div>
-      <div class="quote">
-        <strong>Need to book quickly?</strong>
-        Check the service overview first, choose the suburb page that best matches your location, and then contact us by SMS or email. If key details are missing, they are marked clearly so nothing is implied or guessed.
+      <div class="card">
+        <h2>Browse by category</h2>
+        <ul class="ticks"><li><a href="category-relaxation.html">Relaxation</a></li><li><a href="category-deep-tissue.html">Deep Tissue</a></li><li><a href="category-blended.html">Blended</a></li><li><a href="category-remedial.html">Remedial</a></li><li><a href="category-sports.html">Sports</a></li></ul>
       </div>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Selected Melbourne areas covered in depth</h2>
-      <div class="grid-4">
-        
-        <div class="card compact location-card">
-          <img src="images/armadale-photo.jpg" alt="Armadale streetscape or local area image">
-          <h3><a href="armadale.html">Armadale</a></h3>
-          <p>Calm, polished tone with a focus on quality of experience.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/toorak-photo.jpg" alt="Toorak streetscape or local area image">
-          <h3><a href="toorak.html">Toorak</a></h3>
-          <p>Premium but practical messaging for time-conscious clients.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/south-yarra-photo.jpg" alt="South Yarra streetscape or local area image">
-          <h3><a href="south-yarra.html">South Yarra</a></h3>
-          <p>A faster-paced local page built around convenience and clarity.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/richmond-photo.jpg" alt="Richmond streetscape or local area image">
-          <h3><a href="richmond.html">Richmond</a></h3>
-          <p>Grounded language for people managing work, training, and recovery.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/melbourne-cbd-photo.jpg" alt="Melbourne CBD streetscape or local area image">
-          <h3><a href="melbourne-cbd.html">Melbourne CBD</a></h3>
-          <p>City-focused guidance for office workers, visitors, and commuters.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/brighton-photo.jpg" alt="Brighton streetscape or local area image">
-          <h3><a href="brighton.html">Brighton</a></h3>
-          <p>Softer tone suited to longer, restorative treatment preferences.</p>
-        </div>
-        
-        <div class="card compact location-card">
-          <img src="images/st-kilda-photo.jpg" alt="St Kilda streetscape or local area image">
-          <h3><a href="st-kilda.html">St Kilda</a></h3>
-          <p>A more flexible local tone while keeping presentation professional.</p>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="narrow">
-      <h2>Before you enquire</h2>
-      <div class="adsense-safe">
-        <ul class="ticks">
-          <li>Preferred contact method: <strong>SMS / Email</strong></li>
-          <li>Opening hours: <strong>9 am to 6 pm</strong></li>
-          <li>Payment methods accepted: <strong>Cash or PayID</strong></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section alt">
-    <div class="container">
-      <h2>Helpful articles</h2>
+      <h2>Manual population resources</h2>
       <div class="grid-3">
-        <article class="card article-card">
-          <h3><a href="choose-relaxation-deep-tissue-blended.html">How to choose between Relaxation, Deep Tissue, and Blended massage</a></h3>
-          <p>A practical decision guide for choosing the session style that best matches how your body feels today.</p>
-        </article>
-        <article class="card article-card">
-          <h3><a href="first-booking-message-checklist.html">What to include in your first booking message</a></h3>
-          <p>A short checklist you can copy before sending an SMS or email enquiry.</p>
-        </article>
-        <article class="card article-card">
-          <h3><a href="how-to-use-locations-page.html">How to use the Locations page to choose the right suburb page</a></h3>
-          <p>Use suburb-page comparisons to find the best fit quickly, then move to contact with clear details.</p>
-        </article>
+        <article class="card"><h3><a href="suburb-framework.html">Suburb page framework</a></h3><p>Use a consistent structure for suburb pages while keeping each suburb page materially distinct.</p></article>
+        <article class="card"><h3><a href="docs/listing-data-dictionary.md">Data dictionary</a></h3><p>Field definitions, allowed values, and validation rules for listing imports.</p></article>
+        <article class="card"><h3><a href="docs/sourcing-checklist.md">Sourcing checklist</a></h3><p>Manual-entry checklist for collecting listing facts from business websites.</p></article>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <h3>Massage Services For You</h3>
-      <p class="small">Professional massage information for Melbourne clients, with practical service guidance, suburb coverage, and clear contact pathways.</p>
+      <h3>Massage Directory AU</h3>
+      <p class="small">A static Melbourne + Sydney massage directory designed for clear category browsing and manual data quality control.</p>
     </div>
     <div>
-      <h3>Core pages</h3>
+      <h3>Directory pages</h3>
       <ul class="clean">
-        <li><a href="services.html">Services</a></li>
-        <li><a href="locations.html">Locations</a></li>
-        <li><a href="affiliate.html">Affiliate & Disclosure</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="listings.html">Browse Listings</a></li>
+        <li><a href="city-melbourne.html">Melbourne</a></li>
+        <li><a href="city-sydney.html">Sydney</a></li>
+        <li><a href="suburb-framework.html">Suburb Framework</a></li>
       </ul>
     </div>
     <div>
-      <h3>Contact</h3>
+      <h3>Policies</h3>
       <ul class="clean">
-        <li><a href="sms:+61491951779">SMS: +61 491 951 779</a></li>
-        <li><a href="mailto:bookings@thaimassageforu.com">bookings@thaimassageforu.com</a></li>
-        <li>Melbourne, Victoria</li>
+        <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="review-policy.html">Review Policy</a></li>
+        <li><a href="affiliate.html">Affiliate Disclosure</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>
   </div>

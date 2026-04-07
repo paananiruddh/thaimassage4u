@@ -225,3 +225,15 @@ h3{
   .site-header{position:static}
   .sidebar-box{position:static}
 }
+
+
+/* Directory conversion styles */
+.filter-panel{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:20px}
+.filter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.filter-grid label{display:flex;flex-direction:column;gap:6px;font-weight:700;color:var(--ink)}
+.filter-grid input,.filter-grid select,form input,form textarea{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;color:var(--ink);background:#fff}
+form textarea{min-height:120px;resize:vertical}
+.listing-card .btn{margin-top:12px}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.badge{display:inline-flex;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(91,124,255,.08);color:var(--ink);font-size:.86rem;font-weight:700}
+@media (max-width:1020px){.filter-grid{grid-template-columns:1fr}}

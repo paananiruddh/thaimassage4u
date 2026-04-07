@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5b7cff">
+<title>Suburb Pages Framework | Massage Directory AU</title>
+<meta name="description" content="Framework for building static suburb pages for Melbourne and Sydney massage directory listings.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="icon" href="images/logo.png">
+<link rel="stylesheet" href="styles.css">
+<script src="js/directory.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="" href="index.html">Home</a>
+      <a class="current" href="listings.html">Browse</a>
+      <a class="" href="city-melbourne.html">Melbourne</a>
+      <a class="" href="city-sydney.html">Sydney</a>
+      <a class="" href="claim-listing.html">Claim Listing</a>
+      <a class="" href="editorial-policy.html">Editorial Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section"><div class="narrow"><div class="breadcrumbs"><a href="index.html">Home</a> / Suburb Framework</div><span class="eyebrow">Suburb pages framework</span><h1>Suburb page framework for Melbourne and Sydney</h1><p class="lead">Use this structure when creating suburb pages so each page stays useful, distinct, and easy to maintain from manual listing data.</p></div></section>
+  <section class="section alt"><div class="container grid-2"><div class="card"><h2>Required sections for each suburb page</h2><ul class="ticks"><li>Suburb overview with city context (no fabricated claims)</li><li>Listings snapshot pulled from <code>data/listings.json</code></li><li>Category shortcuts relevant to that suburb</li><li>Booking-style shortcuts (SMS/email, online booking, etc.)</li><li>Claim-listing CTA for owners</li></ul></div><div class="card"><h2>Manual quality rules</h2><ul class="ticks"><li>Only include facts verified from business websites</li><li>Do not copy review text or external review summaries</li><li>No guarantees or medical-outcome claims</li><li>Use the data dictionary for consistent field values</li></ul></div></div></section>
+  <section class="section"><div class="narrow"><h2>Starter template</h2><p>Use <a href="suburb-template.html">suburb-template.html</a> as your base when creating a new suburb page.</p><a class="btn btn-primary" href="suburb-template.html">Open suburb template</a></div></section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>Massage Directory AU</h3>
+      <p class="small">A static Melbourne + Sydney massage directory designed for clear category browsing and manual data quality control.</p>
+    </div>
+    <div>
+      <h3>Directory pages</h3>
+      <ul class="clean">
+        <li><a href="listings.html">Browse Listings</a></li>
+        <li><a href="city-melbourne.html">Melbourne</a></li>
+        <li><a href="city-sydney.html">Sydney</a></li>
+        <li><a href="suburb-framework.html">Suburb Framework</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Policies</h3>
+      <ul class="clean">
+        <li><a href="editorial-policy.html">Editorial Policy</a></li>
+        <li><a href="review-policy.html">Review Policy</a></li>
+        <li><a href="affiliate.html">Affiliate Disclosure</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
