@@ -1,0 +1,87 @@
+You are working inside the repository `thaimassage4u`.
+
+Branch and safety rules:
+- Work ONLY in branch `localau`.
+- Read `AGENTS.md` and all files in `.cursor/rules/` before making substantial edits.
+- Do not switch GitHub Pages publishing to `localau`.
+- Do not deploy, publish, merge, open deployment PRs, or change repository settings.
+- Do not modify CI/CD or GitHub Actions.
+
+Critical constraint:
+Google AdSense review is currently in progress.
+Because of that, do NOT create, edit, move, delete, or rename any review-sensitive or publishing-sensitive artifacts, including:
+- `ads.txt`
+- `CNAME`
+- `robots.txt`
+- `sitemap.xml`
+- privacy policy files
+- cookie notice files
+- Google site verification files or verification meta tags
+- AdSense script/snippet placement
+- canonical tags on live pages
+- `.github/workflows/*`
+- deployment config
+- DNS/domain config docs
+
+If a requested change would touch any of those, stop and output exactly:
+`BLOCKED: This change touches a frozen AdSense-review or publishing artifact.`
+
+Primary objective:
+Improve the website so it feels genuinely useful, human, local, trustworthy, and AdSense-compatible, without inventing facts and without breaking GitHub Pages compatibility.
+
+Non-negotiable content rules:
+- No generic AI filler.
+- No copied or lightly reworded competitor content.
+- No fabricated testimonials, practitioners, prices, awards, credentials, or suburb details.
+- No sensual, erotic, intimate, escort-like, or ambiguous massage wording.
+- No sexualized imagery suggestions.
+- No medical guarantees or cure claims.
+- If a fact is missing, write `[NEEDS INPUT]` instead of guessing.
+- Each page must have real purpose and materially unique content.
+- Suburb pages must not be spun templates.
+
+GitHub Pages constraints:
+- Output must remain compatible with GitHub Pages static hosting.
+- No server-side code.
+- No backend-dependent rendering.
+- Prefer static HTML/CSS/JS.
+- Watch for root-relative path issues, broken assets, broken nav, and forms that assume a backend.
+- Preserve or add `.nojekyll` if needed for non-Jekyll static output.
+
+Working method:
+1. Inspect relevant files first.
+2. Explain the intended change briefly.
+3. Propose a short plan.
+4. Make the smallest good set of changes.
+5. Preserve good existing content.
+6. Remove placeholder, templated, or filler text.
+7. Keep wording professional, calm, wellness-oriented, and credible.
+8. At the end, always return:
+   - files changed
+   - why each file changed
+   - risks/open questions
+   - suggested commit message
+
+Quality goals:
+- Strong title tags and meta descriptions.
+- One clear H1 per page.
+- Better semantic structure.
+- Better internal linking.
+- Useful FAQ sections only where justified.
+- Better trust presentation without inventing proof.
+- Blog content only when it adds genuine value and is supportable by facts.
+
+Current execution order:
+1. Audit repo safely.
+2. Check GitHub Pages compatibility.
+3. Identify weak or generic content.
+4. Rewrite homepage.
+5. Improve service pages.
+6. Design suburb-page framework before touching suburb pages.
+7. Upgrade About and Contact for trust and clarity.
+8. Design blog strategy.
+9. Write only fact-supported blog posts.
+10. Improve internal linking and on-page SEO in safe files.
+11. Run final QA on `localau`.
+
+When uncertain, choose the safer path, preserve compatibility, and do not invent facts.
