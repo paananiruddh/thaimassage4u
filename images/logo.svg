@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Massage Directory AU logo</title>
+<desc id="desc">Calm circular emblem with leaf motif.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8aa08e"/>
+    <stop offset="1" stop-color="#5f8f8b"/>
+  </linearGradient>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f4efe6"/>
+    <stop offset="1" stop-color="#d9c5a5"/>
+  </linearGradient>
+</defs>
+<rect x="4" y="4" width="120" height="120" rx="34" fill="url(#bg)"/>
+<circle cx="64" cy="64" r="42" fill="rgba(255,255,255,0.16)"/>
+<path d="M64 34c-9 9-14 20-14 30 0 13 8 24 14 30 6-6 14-17 14-30 0-10-5-21-14-30Z" fill="url(#leaf)"/>
+<path d="M64 42v44" stroke="#fffdf9" stroke-width="4" stroke-linecap="round"/>
+</svg>

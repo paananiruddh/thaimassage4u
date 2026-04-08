@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#5b7cff">
+<meta name="theme-color" content="#5f8f8b">
 <title>Suburb Pages Framework | Massage Directory AU</title>
 <meta name="description" content="Framework for building static suburb pages for Melbourne and Sydney massage directory listings.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script src="js/directory.js" defer></script>
 </head>
@@ -15,7 +15,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
+    <a class="brand" href="index.html"><img src="images/logo.svg" alt="Massage Directory AU logo"><span>Massage Directory AU</span></a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="" href="index.html">Home</a>
       <a class="current" href="listings.html">Browse</a>
@@ -23,14 +23,54 @@
       <a class="" href="city-sydney.html">Sydney</a>
       <a class="" href="claim-listing.html">Claim Listing</a>
       <a class="" href="editorial-policy.html">Editorial Policy</a>
+      <a class="" href="review-policy.html">Review Policy</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="section"><div class="narrow"><div class="breadcrumbs"><a href="index.html">Home</a> / Suburb Framework</div><span class="eyebrow">Suburb pages framework</span><h1>Suburb page framework for Melbourne and Sydney</h1><p class="lead">Use this structure when creating suburb pages so each page stays useful, distinct, and easy to maintain from manual listing data.</p></div></section>
-  <section class="section alt"><div class="container grid-2"><div class="card"><h2>Required sections for each suburb page</h2><ul class="ticks"><li>Suburb overview with city context (no fabricated claims)</li><li>Listings snapshot pulled from <code>data/listings.json</code></li><li>Category shortcuts relevant to that suburb</li><li>Booking-style shortcuts (SMS/email, online booking, etc.)</li><li>Claim-listing CTA for owners</li></ul></div><div class="card"><h2>Manual quality rules</h2><ul class="ticks"><li>Only include facts verified from business websites</li><li>Do not copy review text or external review summaries</li><li>No guarantees or medical-outcome claims</li><li>Use the data dictionary for consistent field values</li></ul></div></div></section>
-  <section class="section"><div class="narrow"><h2>Starter template</h2><p>Use <a href="suburb-template.html">suburb-template.html</a> as your base when creating a new suburb page.</p><a class="btn btn-primary" href="suburb-template.html">Open suburb template</a></div></section>
+  <section class="section">
+    <div class="narrow">
+      <div class="breadcrumbs"><a href="index.html">Home</a> / Suburb Framework</div>
+      <span class="eyebrow">Suburb pages framework</span>
+      <h1>Suburb page framework for Melbourne and Sydney</h1>
+      <p class="lead">Use this structure to build consistent suburb pages while keeping each suburb genuinely useful and distinct.</p>
+      <img class="inline-photo" src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=1400&q=80" alt="Clean and neutral massage studio interior with folded towels" loading="lazy">
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container grid-2">
+      <article class="card">
+        <h2>Required sections</h2>
+        <ul class="ticks">
+          <li>Suburb overview with city context and practical user guidance</li>
+          <li>Listings snapshot pathway from <code>data/listings.json</code></li>
+          <li>Category shortcuts relevant to user intent</li>
+          <li>Booking-style shortcuts (SMS/email, phone, online, walk-in)</li>
+          <li>Owner claim/update call-to-action</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Manual quality rules</h2>
+        <ul class="ticks">
+          <li>Only include facts verified from official business websites</li>
+          <li>Do not copy external review text or star ratings</li>
+          <li>No guaranteed outcomes or medical claims</li>
+          <li>Use consistent field values from the data dictionary</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="narrow panel">
+      <h2>Starter template and examples</h2>
+      <p>Use <a href="suburb-template.html">suburb-template.html</a> to create new suburb pages. Existing suburb pages can be used as structure references only, with facts verified individually.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="suburb-template.html">Open suburb template</a>
+        <a class="btn btn-secondary" href="listings.html">Browse listings filters</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">

@@ -19,6 +19,7 @@
 5. Capture source URL.
 6. Record verification date in `source_checked_date`.
 7. Exclude unsupported claims.
+8. If any detail is unclear, mark as `[NEEDS INPUT]` and hold publication until verified.
 
 ## Quality checks before publish
 - No fabricated data fields
@@ -26,3 +27,8 @@
 - No suggestive wording
 - Description is factual and concise
 - Filters are populated consistently
+
+## Owner submission checks
+- Verify owner-submitted edits against the official website before publish.
+- Keep a note in `notes_internal` when verification is pending.
+- Request clarification for missing city, suburb, category, or booking-style values.

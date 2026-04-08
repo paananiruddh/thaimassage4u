@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#5b7cff">
+<meta name="theme-color" content="#5f8f8b">
 <title>Sydney Massage Directory | Massage Directory AU</title>
 <meta name="description" content="Browse Sydney massage listings by suburb, category, price band, and booking style.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script src="js/directory.js" defer></script>
 </head>
@@ -15,7 +15,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
+    <a class="brand" href="index.html"><img src="images/logo.svg" alt="Massage Directory AU logo"><span>Massage Directory AU</span></a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="" href="index.html">Home</a>
       <a class="" href="listings.html">Browse</a>
@@ -23,13 +23,70 @@
       <a class="current" href="city-sydney.html">Sydney</a>
       <a class="" href="claim-listing.html">Claim Listing</a>
       <a class="" href="editorial-policy.html">Editorial Policy</a>
+      <a class="" href="review-policy.html">Review Policy</a>
     </nav>
   </div>
 </header>
 
 <main id="main" data-page="city" data-city="sydney">
-  <section class="section"><div class="narrow"><div class="breadcrumbs"><a href="index.html">Home</a> / Sydney</div><span class="eyebrow">City directory</span><h1>Sydney massage directory</h1><p class="lead">Browse Sydney listings by suburb, category, and booking style. Add new Sydney entries through the CSV/JSON templates.</p><div class="button-row"><a class="btn btn-primary" href="listings.html?city=sydney">View Sydney listings</a><a class="btn btn-secondary" href="claim-listing.html">Submit listing details</a></div></div></section>
-  <section class="section alt"><div class="container grid-2"><div class="card"><h2>Suggested starting suburbs</h2><ul class="ticks"><li><a href="listings.html?city=sydney&suburb=sydney-cbd">Sydney CBD</a></li><li><a href="listings.html?city=sydney&suburb=surry-hills">Surry Hills</a></li><li><a href="listings.html?city=sydney&suburb=newtown">Newtown</a></li><li><a href="listings.html?city=sydney&suburb=parramatta">Parramatta</a></li><li><a href="listings.html?city=sydney&suburb=bondi-junction">Bondi Junction</a></li></ul></div><div class="card"><h2>Directory setup resources</h2><ul class="ticks"><li><a href="data/listings-template.csv">CSV import template</a></li><li><a href="data/listings-template.json">JSON import template</a></li><li><a href="docs/listing-data-dictionary.md">Data dictionary</a></li><li><a href="docs/sourcing-checklist.md">Sourcing checklist</a></li></ul></div></div></section>
+  <section class="section">
+    <div class="narrow">
+      <div class="breadcrumbs"><a href="index.html">Home</a> / Sydney</div>
+      <span class="eyebrow">City directory</span>
+      <h1>Sydney massage directory</h1>
+      <p class="lead">Browse Sydney listings by suburb, category, booking style, and price band. Keep city pages practical for users and simple for manual population workflows.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="listings.html?city=sydney">View Sydney listings</a>
+        <a class="btn btn-secondary" href="claim-listing.html">Submit listing details</a>
+      </div>
+      <img class="inline-photo" src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80" alt="Sydney skyline over harbour during golden hour" loading="lazy">
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container grid-2">
+      <article class="card">
+        <h2>Suggested suburb pathways</h2>
+        <ul class="ticks">
+          <li><a href="listings.html?city=sydney&suburb=sydney-cbd">Sydney CBD</a></li>
+          <li><a href="listings.html?city=sydney&suburb=surry-hills">Surry Hills</a></li>
+          <li><a href="listings.html?city=sydney&suburb=newtown">Newtown</a></li>
+          <li><a href="listings.html?city=sydney&suburb=parramatta">Parramatta</a></li>
+          <li><a href="listings.html?city=sydney&suburb=bondi-junction">Bondi Junction</a></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Directory setup resources</h2>
+        <ul class="ticks">
+          <li><a href="data/listings-template.csv">CSV import template</a></li>
+          <li><a href="data/listings-template.json">JSON import template</a></li>
+          <li><a href="docs/listing-data-dictionary.md">Data dictionary</a></li>
+          <li><a href="docs/sourcing-checklist.md">Sourcing checklist</a></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card">
+        <h2>Category shortcuts</h2>
+        <ul class="ticks">
+          <li><a href="listings.html?city=sydney&category=relaxation">Relaxation</a></li>
+          <li><a href="listings.html?city=sydney&category=deep-tissue">Deep Tissue</a></li>
+          <li><a href="listings.html?city=sydney&category=blended">Blended</a></li>
+          <li><a href="listings.html?city=sydney&category=remedial">Remedial</a></li>
+          <li><a href="listings.html?city=sydney&category=sports">Sports</a></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Quality notes</h2>
+        <p>Sydney entries should contain only verified details from official business websites or owner-submitted facts that can be confirmed.</p>
+        <div class="button-row">
+          <a class="btn btn-secondary" href="editorial-policy.html">Editorial policy</a>
+          <a class="btn btn-secondary" href="review-policy.html">Review policy</a>
+        </div>
+      </article>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">

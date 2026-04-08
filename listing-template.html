@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#5b7cff">
+<meta name="theme-color" content="#5f8f8b">
 <title>Listing Template | Massage Directory AU</title>
 <meta name="description" content="Template page for rendering a static listing from JSON data by listing ID.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script src="js/directory.js" defer></script>
 </head>
@@ -15,7 +15,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
+    <a class="brand" href="index.html"><img src="images/logo.svg" alt="Massage Directory AU logo"><span>Massage Directory AU</span></a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="" href="index.html">Home</a>
       <a class="current" href="listings.html">Browse</a>
@@ -23,13 +23,39 @@
       <a class="" href="city-sydney.html">Sydney</a>
       <a class="" href="claim-listing.html">Claim Listing</a>
       <a class="" href="editorial-policy.html">Editorial Policy</a>
+      <a class="" href="review-policy.html">Review Policy</a>
     </nav>
   </div>
 </header>
 
 <main id="main" data-page="listing-template">
-  <section class="section"><div class="narrow"><div class="breadcrumbs"><a href="index.html">Home</a> / <a href="listings.html">Browse Listings</a> / Listing Template</div><span class="eyebrow">Listing page template</span><h1 id="listing-name">Listing name placeholder</h1><p class="lead" id="listing-summary">Use <code>listing-template.html?id=listing-001</code> to render a listing from <code>data/listings.json</code>.</p><div class="kicker-row" id="listing-meta"></div></div></section>
-  <section class="section alt"><div class="container content-layout"><div><h2>Service overview</h2><p id="listing-description">[NEEDS INPUT]</p><h2>Booking information</h2><ul class="ticks" id="listing-booking"></ul><h2>Source and verification</h2><ul class="ticks" id="listing-source"></ul></div><aside class="sidebar-box"><h3>Action</h3><div class="button-row" id="listing-actions"></div><p class="small">This template is static and should only display manually verified listing facts.</p></aside></div></section>
+  <section class="section">
+    <div class="narrow">
+      <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="listings.html">Browse Listings</a> / Listing Template</div>
+      <span class="eyebrow">Listing page template</span>
+      <h1 id="listing-name">Listing name placeholder</h1>
+      <p class="lead" id="listing-summary">Use <code>listing-template.html?id=listing-001</code> to render one listing from <code>data/listings.json</code>.</p>
+      <div class="kicker-row" id="listing-meta"></div>
+      <img class="inline-photo" src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=1400&q=80" alt="Wellness studio treatment room with clean neutral styling" loading="lazy">
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container content-layout">
+      <div>
+        <h2>Service overview</h2>
+        <p id="listing-description">[NEEDS INPUT]</p>
+        <h2>Booking information</h2>
+        <ul class="ticks" id="listing-booking"></ul>
+        <h2>Source and verification</h2>
+        <ul class="ticks" id="listing-source"></ul>
+      </div>
+      <aside class="sidebar-box">
+        <h3>Actions</h3>
+        <div class="button-row" id="listing-actions"></div>
+        <p class="small">This page should only display factual details verified from an official business source.</p>
+      </aside>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">

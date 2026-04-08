@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#5b7cff">
+<meta name="theme-color" content="#5f8f8b">
 <title>Melbourne + Sydney Massage Directory | Massage Directory AU</title>
 <meta name="description" content="Static Melbourne and Sydney massage directory with city, suburb, category, price, and booking-style filters.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="canonical" href="https://thaimassageforu.com/">
 <link rel="stylesheet" href="styles.css">
 <script src="js/directory.js" defer></script>
@@ -16,7 +16,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html"><img src="images/logo.png" alt="Massage Services For You logo"><span>Massage Directory AU</span></a>
+    <a class="brand" href="index.html"><img src="images/logo.svg" alt="Massage Directory AU logo"><span>Massage Directory AU</span></a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a class="current" href="index.html">Home</a>
       <a class="" href="listings.html">Browse</a>
@@ -24,26 +24,69 @@
       <a class="" href="city-sydney.html">Sydney</a>
       <a class="" href="claim-listing.html">Claim Listing</a>
       <a class="" href="editorial-policy.html">Editorial Policy</a>
+      <a class="" href="review-policy.html">Review Policy</a>
     </nav>
   </div>
 </header>
 
 <main id="main" data-page="home">
   <section class="section">
-    <div class="narrow">
-      <span class="eyebrow">Melbourne + Sydney directory</span>
-      <h1>Find massage listings by city, suburb, and category</h1>
-      <p class="lead">This directory is static and manually curated for clear browsing. Use filters to narrow by city, suburb, category, price band, and booking style.</p>
-      <div class="button-row">
-        <a class="btn btn-primary" href="listings.html">Browse all listings</a>
-        <a class="btn btn-secondary" href="claim-listing.html">Claim a listing</a>
+    <div class="container featured-rails">
+      <aside class="marquee-rail left" aria-label="Featured sample listing slots">
+        <div class="marquee-track">
+          <article class="marquee-card"><strong>Featured slot M01</strong><span>Melbourne / Relaxation</span></article>
+          <article class="marquee-card"><strong>Featured slot S01</strong><span>Sydney / Remedial</span></article>
+          <article class="marquee-card"><strong>Featured slot M02</strong><span>Melbourne / Sports</span></article>
+          <article class="marquee-card"><strong>Featured slot S02</strong><span>Sydney / Blended</span></article>
+          <article class="marquee-card"><strong>Featured slot M01</strong><span>Melbourne / Relaxation</span></article>
+          <article class="marquee-card"><strong>Featured slot S01</strong><span>Sydney / Remedial</span></article>
+          <article class="marquee-card"><strong>Featured slot M02</strong><span>Melbourne / Sports</span></article>
+          <article class="marquee-card"><strong>Featured slot S02</strong><span>Sydney / Blended</span></article>
+        </div>
+      </aside>
+      <div class="featured-main">
+        <span class="eyebrow">Melbourne + Sydney directory</span>
+        <h1>Find verified massage and wellness listings with confidence</h1>
+        <p class="lead">Browse a professional, wellness-focused directory across Melbourne and Sydney. Listings are manually reviewed and designed for clear city, suburb, category, price-band, and booking-style filtering.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="listings.html">Browse all listings</a>
+          <a class="btn btn-secondary" href="claim-listing.html">Claim a listing</a>
+        </div>
+        <figure class="hero-spotlight">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1600&q=80" alt="Calm massage treatment room with folded towels and neutral decor" loading="eager">
+        </figure>
+        <div class="featured-strip" aria-label="Featured sample listing strip">
+          <div class="marquee-track">
+            <article class="featured-pill"><strong>Provider sample slot A</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot B</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot C</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot D</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot A</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot B</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot C</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+            <article class="featured-pill"><strong>Provider sample slot D</strong><span>[NEEDS INPUT] Verified listing placeholder</span></article>
+          </div>
+        </div>
       </div>
+      <aside class="marquee-rail right" aria-label="Featured category slots">
+        <div class="marquee-track">
+          <article class="marquee-card"><strong>Category rail</strong><span>Relaxation</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Deep Tissue</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Remedial</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Sports</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Relaxation</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Deep Tissue</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Remedial</span></article>
+          <article class="marquee-card"><strong>Category rail</strong><span>Sports</span></article>
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="section alt">
     <div class="container">
-      <h2>Quick filters</h2>
+      <h2>Quick directory filters</h2>
+      <p class="small">Filter listings by practical criteria and keep data entry easy for manual research workflows.</p>
       <form class="filter-panel" action="listings.html" method="get">
         <div class="filter-grid">
           <label>City<select name="city"><option value="">All cities</option><option value="melbourne">Melbourne</option><option value="sydney">Sydney</option></select></label>
@@ -62,13 +105,43 @@
 
   <section class="section">
     <div class="container grid-2">
-      <div class="card">
-        <h2>Browse by city</h2>
-        <ul class="ticks"><li><a href="city-melbourne.html">Melbourne directory page</a></li><li><a href="city-sydney.html">Sydney directory page</a></li></ul>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80" alt="Melbourne city skyline at dusk" loading="lazy">
+        <h2>Melbourne directory</h2>
+        <p class="small">Browse suburb and category pathways for Melbourne listings.</p>
+        <div class="button-row"><a class="btn btn-primary" href="city-melbourne.html">Open Melbourne page</a></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8d3dc?auto=format&fit=crop&w=1200&q=80" alt="Sydney harbour skyline with calm evening light" loading="lazy">
+        <h2>Sydney directory</h2>
+        <p class="small">Start with city filters, then narrow to suburb and booking style.</p>
+        <div class="button-row"><a class="btn btn-primary" href="city-sydney.html">Open Sydney page</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>Directory pages ready now</h2>
+      <div class="grid-3">
+        <article class="card"><h3><a href="listings.html">Listings page template</a></h3><p>City, suburb, category, price band, and booking style filters are active from static JSON.</p></article>
+        <article class="card"><h3><a href="listing-template.html">Listing page template</a></h3><p>Render detail pages by listing ID while keeping sourcing and verification fields visible.</p></article>
+        <article class="card"><h3><a href="suburb-framework.html">Suburb page framework</a></h3><p>Create suburb pages quickly with non-fabricated, locally distinct content sections.</p></article>
       </div>
-      <div class="card">
-        <h2>Browse by category</h2>
-        <ul class="ticks"><li><a href="category-relaxation.html">Relaxation</a></li><li><a href="category-deep-tissue.html">Deep Tissue</a></li><li><a href="category-blended.html">Blended</a></li><li><a href="category-remedial.html">Remedial</a></li><li><a href="category-sports.html">Sports</a></li></ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Browse by category</h2>
+      <div class="grid-3">
+        <article class="card compact"><h3><a href="category-relaxation.html">Relaxation</a></h3><p>Calm wellness-focused massage options.</p></article>
+        <article class="card compact"><h3><a href="category-deep-tissue.html">Deep Tissue</a></h3><p>Pressure-focused category filter pathway.</p></article>
+        <article class="card compact"><h3><a href="category-remedial.html">Remedial</a></h3><p>Listing category for verified remedial offerings.</p></article>
+      </div>
+      <div class="grid-2" style="margin-top:18px;">
+        <article class="card compact"><h3><a href="category-blended.html">Blended</a></h3><p>Mixed technique category path.</p></article>
+        <article class="card compact"><h3><a href="category-sports.html">Sports</a></h3><p>Sports-focused listing category path.</p></article>
       </div>
     </div>
   </section>
@@ -77,9 +150,9 @@
     <div class="container">
       <h2>Manual population resources</h2>
       <div class="grid-3">
-        <article class="card"><h3><a href="suburb-framework.html">Suburb page framework</a></h3><p>Use a consistent structure for suburb pages while keeping each suburb page materially distinct.</p></article>
-        <article class="card"><h3><a href="docs/listing-data-dictionary.md">Data dictionary</a></h3><p>Field definitions, allowed values, and validation rules for listing imports.</p></article>
-        <article class="card"><h3><a href="docs/sourcing-checklist.md">Sourcing checklist</a></h3><p>Manual-entry checklist for collecting listing facts from business websites.</p></article>
+        <article class="card"><h3><a href="docs/import-format.md">CSV/JSON import format</a></h3><p>Required columns, naming rules, and upload workflow for manual data entry.</p></article>
+        <article class="card"><h3><a href="docs/listing-data-dictionary.md">Data dictionary</a></h3><p>Field definitions, allowed values, and consistency checks for quality control.</p></article>
+        <article class="card"><h3><a href="docs/sourcing-checklist.md">Sourcing checklist</a></h3><p>Manual verification checklist using official business websites and owner submissions.</p></article>
       </div>
     </div>
   </section>
