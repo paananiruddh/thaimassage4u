@@ -5,12 +5,6 @@
 - Official contact/about pages on the same domain
 - Owner-submitted updates verifiable on official site
 
-## Not allowed
-- Google Search scraping
-- Google Maps scraping
-- Google review text import
-- Third-party review aggregation copy
-
 ## Required verification steps
 1. Confirm business name from official website.
 2. Confirm city and suburb coverage.
