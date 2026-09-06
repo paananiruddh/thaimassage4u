@@ -15,6 +15,19 @@ const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&l
 // characters to match against; the resulting <a> is real, crawlable HTML, not escaped text.
 const markdown = (value: string) => escape(value).replace(/^### (.*)$/gm, "<h3>$1</h3>").replace(/^## (.*)$/gm, "<h2>$1</h2>").replace(/^# (.*)$/gm, "<h1>$1</h1>").replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>').split(/\n{2,}/).map(block => block.startsWith("<h") ? block : `<p>${block.replace(/\n/g, "<br />")}</p>`).join("");
 
+/**
+ * GA4 measurement ID — public by design (it ships in every page's client-side JS, same as any
+ * site using Google Analytics), not a secret, so it's a plain constant rather than a Worker
+ * secret. send_page_view is disabled here: this is a client-routed SPA (wouter), so gtag's
+ * automatic page_view on `config` would only ever fire once per full page load and miss every
+ * subsequent in-app navigation. client/src/App.tsx's route listener fires page_view manually on
+ * every route change instead, including the first one — this just loads the library and
+ * initializes it.
+ */
+const GA_MEASUREMENT_ID = "G-3CBC79PGH6";
+const GTAG_SNIPPET = `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{send_page_view:false});</script>`;
+
 function renderHead(head: HeadMeta, origin: string) {
   const title = escape(clean(head.title || siteName, 70));
   const description = escape(clean(head.description || defaultDescription, 200));
@@ -26,6 +39,7 @@ function renderHead(head: HeadMeta, origin: string) {
   if (image) tags.push(`<meta property="og:image" content="${escape(image)}" />`, `<meta name="twitter:image" content="${escape(image)}" />`);
   if (head.noindex || head.notFound) tags.push(`<meta name="robots" content="noindex, follow" />`);
   if (head.jsonLd) tags.push(`<script type="application/ld+json">${JSON.stringify(head.jsonLd).replace(/</g, "\\u003c")}</script>`);
+  tags.push(GTAG_SNIPPET);
   return tags.join("\n");
 }
 

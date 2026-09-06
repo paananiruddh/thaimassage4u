@@ -30,6 +30,18 @@ function fireEvent(config: WidgetConfig, ev: EventName, data: Record<string, unk
   } catch {
     // localStorage/fetch can throw in locked-down contexts — never let telemetry break the widget.
   }
+  // Mirrors every widget event into GA4 (loaded host-side by worker/ssr.tsx's GTAG_SNIPPET) so
+  // the whole concierge funnel shows up alongside the rest of the site's events instead of only
+  // in the concierge_events D1 table, which has no dashboard view of its own. This widget is a
+  // separate vanilla-TS bundle with no React/analytics.ts import of its own — checking
+  // window.gtag directly here is the one place that reaches every event without wiring each
+  // call site individually.
+  try {
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === "function") gtag("event", `concierge_${ev.replace(/:/g, "_")}`, { site: config.site, ...data });
+  } catch {
+    // Same rule as above: telemetry never breaks the widget.
+  }
 }
 
 function sessionId(): string {
