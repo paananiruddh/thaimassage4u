@@ -1,4 +1,5 @@
 import { SiteFooter, SiteHeader } from "@/components/SiteFrame";
+import { trackEvent } from "@/lib/analytics";
 import { COUNTRIES } from "@/lib/country";
 import { ArrowUpRight, PackageOpen, Truck } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -130,13 +131,13 @@ export default function Supplies() {
         <section className="places-section supplies-section" key={category.key}>
           <div className="section-heading"><div><p className="eyebrow">{t("eyebrow")}</p><h2>{t(category.key) === category.key ? category.label : t(category.key)}</h2></div>
             <div className="supply-compare-links">
-              {category.compareUrl && <a href={category.compareUrl} target="_blank" rel="noreferrer noopener sponsored" className="text-link">{t("compare")} <ArrowUpRight size={16} /></a>}
-              {category.amazonUrl && <a href={category.amazonUrl} target="_blank" rel="noreferrer noopener sponsored" className="text-link">{t("amazon")} <ArrowUpRight size={16} /></a>}
+              {category.compareUrl && <a href={category.compareUrl} target="_blank" rel="noreferrer noopener sponsored" className="text-link" onClick={() => trackEvent("supply_compare_click", { category: category.key, source: "aliexpress" })}>{t("compare")} <ArrowUpRight size={16} /></a>}
+              {category.amazonUrl && <a href={category.amazonUrl} target="_blank" rel="noreferrer noopener sponsored" className="text-link" onClick={() => trackEvent("supply_compare_click", { category: category.key, source: "amazon" })}>{t("amazon")} <ArrowUpRight size={16} /></a>}
             </div>
           </div>
           <div className="supply-grid">
             {category.offers.map(offer => (
-              <a className="supply-card" key={offer.id} href={`/api/supplies/go?id=${offer.id}`} target="_blank" rel="noreferrer noopener">
+              <a className="supply-card" key={offer.id} href={`/api/supplies/go?id=${offer.id}`} target="_blank" rel="noreferrer noopener" onClick={() => trackEvent("supply_offer_click", { category: category.key, supplier: offer.supplier, offer_id: offer.id })}>
                 {offer.image ? <div className="supply-card__image" style={{ backgroundImage: `url(${offer.image})` }} /> : <div className="supply-card__image supply-card__image--empty"><PackageOpen size={22} /></div>}
                 <div className="supply-card__body">
                   <h3>{offer.title}</h3>

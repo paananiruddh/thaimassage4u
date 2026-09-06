@@ -13,10 +13,26 @@ import ListYourPlace from "@/pages/ListYourPlace";
 import MyListing from "@/pages/MyListing";
 import Supplies from "@/pages/Supplies";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { useEffect } from "react";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { trackPageView } from "./lib/analytics";
 import Home from "./pages/Home";
+
+/**
+ * gtag's automatic page_view (worker/ssr.tsx's GTAG_SNIPPET has send_page_view disabled) only
+ * ever fires once per full page load, which for a client-routed SPA means every in-app
+ * navigation after the first would be invisible in GA. This fires one on mount (covering the
+ * first, server-rendered route) and again on every location change thereafter.
+ */
+function RouteTracker() {
+  const [location] = useLocation();
+  useEffect(() => {
+    trackPageView(location);
+  }, [location]);
+  return null;
+}
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -65,6 +81,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <RouteTracker />
           <Router />
         </TooltipProvider>
       </ThemeProvider>

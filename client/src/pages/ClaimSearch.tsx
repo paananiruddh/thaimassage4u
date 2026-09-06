@@ -1,4 +1,5 @@
 import { SiteFooter, SiteHeader } from "@/components/SiteFrame";
+import { trackEvent } from "@/lib/analytics";
 import { ArrowUpRight, KeyRound, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useSearch } from "wouter";
@@ -26,7 +27,7 @@ export default function ClaimSearch() {
       if (country) params.set("country", country);
       fetch(`/api/claim/search?${params}`)
         .then(r => r.json())
-        .then((body: { results: Result[] }) => setResults(body.results))
+        .then((body: { results: Result[] }) => { setResults(body.results); trackEvent("claim_search", { query_length: q.trim().length, result_count: body.results.length, country: country || undefined }); })
         .catch(() => setResults([]))
         .finally(() => setLoading(false));
     }, 300);
@@ -52,7 +53,7 @@ export default function ClaimSearch() {
           {results && results.length > 0 && (
             <div className="claim-search__results">
               {results.map(result => (
-                <Link key={result.slug} href={`/listing/${result.slug}`} className="claim-search__result">
+                <Link key={result.slug} href={`/listing/${result.slug}`} className="claim-search__result" onClick={() => trackEvent("claim_search_result_click", { listing_slug: result.slug, already_claimed: result.claimed })}>
                   <span><strong>{result.name}</strong><small>{result.citySlug.replace(/-/g, " ")}, {result.countryCode.toUpperCase()}</small></span>
                   {result.claimed ? <small className="claim-search__claimed">Already claimed</small> : <ArrowUpRight size={18} />}
                 </Link>

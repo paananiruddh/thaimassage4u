@@ -1,5 +1,6 @@
 import { Concierge } from "@/components/Concierge";
 import { SiteFooter, SiteHeader } from "@/components/SiteFrame";
+import { trackEvent } from "@/lib/analytics";
 import { langForCountry, STRINGS, type Lang } from "@/lib/i18n";
 import { trpc } from "@/lib/trpc";
 import { formatPremiumPrice } from "@shared/pricing";
@@ -40,6 +41,7 @@ function PremiumPlacementBox({ slug, lang }: { slug: string; lang: Lang }) {
 
   async function buy(tier: "city" | "country") {
     setPending(tier);
+    trackEvent("premium_checkout_start", { listing_slug: slug, tier });
     try {
       const response = await fetch("/api/premium/checkout", {
         method: "POST",
@@ -49,11 +51,13 @@ function PremiumPlacementBox({ slug, lang }: { slug: string; lang: Lang }) {
       const body: { checkoutUrl?: string; error?: string } = await response.json().catch(() => ({}));
       if (!response.ok || !body.checkoutUrl) {
         toast.error(body.error ?? t.checkoutError);
+        trackEvent("premium_checkout_error", { listing_slug: slug, tier });
         return;
       }
       window.location.href = body.checkoutUrl;
     } catch {
       toast.error(t.checkoutError);
+      trackEvent("premium_checkout_error", { listing_slug: slug, tier });
       setPending(null);
     }
   }
@@ -98,12 +102,14 @@ function ClaimListingBox({ slug, lang }: { slug: string; lang: Lang }) {
     try {
       const response = await fetch("/api/claim/start", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ listingSlug: slug, channel: pickedChannel }) });
       const body: { maskedAddress?: string; error?: string } = await response.json().catch(() => ({}));
-      if (!response.ok) { toast.error(body.error ?? t.sendError); return; }
+      if (!response.ok) { toast.error(body.error ?? t.sendError); trackEvent("claim_code_error", { listing_slug: slug, channel: pickedChannel }); return; }
       setMaskedAddress(body.maskedAddress ?? "");
       setStep("code");
+      trackEvent("claim_code_requested", { listing_slug: slug, channel: pickedChannel });
       toast.success(t.sendSuccess(pickedChannel));
     } catch {
       toast.error(t.sendError);
+      trackEvent("claim_code_error", { listing_slug: slug, channel: pickedChannel });
     } finally {
       setBusy(false);
     }
@@ -115,7 +121,8 @@ function ClaimListingBox({ slug, lang }: { slug: string; lang: Lang }) {
     try {
       const response = await fetch("/api/claim/verify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ listingSlug: slug, channel, code }) });
       const body: { success?: boolean; error?: string } = await response.json().catch(() => ({}));
-      if (!response.ok || !body.success) { toast.error(body.error ?? t.verifyError); return; }
+      if (!response.ok || !body.success) { toast.error(body.error ?? t.verifyError); trackEvent("claim_verify_error", { listing_slug: slug }); return; }
+      trackEvent("claim_verified", { listing_slug: slug, channel });
       toast.success(t.verifySuccess);
       navigate("/my-listing");
     } catch {
@@ -154,15 +161,30 @@ export default function ListingDetail() {
   const slug = params?.slug ?? "";
   const search = useSearch();
   const { data, isLoading, error } = trpc.directory.listingBySlug.useQuery({ slug }, { enabled: Boolean(slug) });
-  const inquiry = trpc.directory.submitInquiry.useMutation({ onSuccess: () => toast.success("Your inquiry is safely with the Quiet Hour desk."), onError: () => toast.error("That did not send. Please try again.") });
+  const inquiry = trpc.directory.submitInquiry.useMutation({ onSuccess: () => { toast.success("Your inquiry is safely with the Quiet Hour desk."); trackEvent("inquiry_submitted", { listing_slug: slug }); }, onError: () => toast.error("That did not send. Please try again.") });
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", consentEmail: false, consentSms: false });
   const submit = (event: FormEvent) => { event.preventDefault(); inquiry.mutate({ ...form, listingId: data?.listing.id, phone: form.phone || undefined }); };
 
   useEffect(() => {
     const premium = new URLSearchParams(search).get("premium");
-    if (premium === "success") toast.success("Premium placement is active — thank you!");
-    if (premium === "cancelled") toast("Checkout cancelled — no charge was made.");
-  }, [search]);
+    if (premium === "success") { toast.success("Premium placement is active — thank you!"); trackEvent("premium_purchase", { listing_slug: slug }); }
+    if (premium === "cancelled") { toast("Checkout cancelled — no charge was made."); trackEvent("premium_checkout_cancelled", { listing_slug: slug }); }
+  }, [search, slug]);
+
+  // One event per listing view, not per render — data.listing.id is stable once loaded, so this
+  // fires exactly once per real page view instead of on every state change in the page.
+  useEffect(() => {
+    if (!data) return;
+    trackEvent("view_listing", {
+      listing_id: data.listing.id,
+      listing_slug: data.listing.slug,
+      city: data.city.slug,
+      country: data.city.countryCode,
+      is_premium: Boolean((data.listing as unknown as { isPremium?: boolean }).isPremium),
+      is_claimed: Boolean((data.listing as unknown as { isClaimed?: boolean }).isClaimed),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.listing.id]);
 
   if (isLoading) return <><SiteHeader /><main className="route-loading">Loading listing…</main></>;
   if (error || !data) return <><SiteHeader /><main className="route-loading"><p className="eyebrow">Directory listing</p><h1>This place is not currently available.</h1><Link href="/directory" className="text-link">Return to the directory <ArrowUpRight size={16} /></Link></main><SiteFooter /></>;
@@ -181,7 +203,7 @@ export default function ListingDetail() {
   // worth catching before anything else competes for the click.
   const isClaimed = Boolean(extra.isClaimed);
   return <><Concierge /><SiteHeader /><main>
-    <section className="listing-hero"><div className="listing-hero__image" style={listing.imageUrl ? { backgroundImage: `url(${listing.imageUrl})` } : undefined}><span>{category.name}</span></div><div className="listing-hero__copy"><p className="eyebrow">{city.name} / {category.name}</p><h1>{listing.name}</h1>{isPremium && <p className="listing-featured-flag">Featured — this studio pays for placement</p>}<p className="listing-descriptor">{listing.descriptor || "An independently listed wellness place."}</p><p>{listing.description || "This profile is being thoughtfully completed by its owner."}</p><div className="listing-meta">{listing.neighbourhood && <span><MapPin size={16} />{listing.neighbourhood}</span>}{extra.rating ? <span><Star size={16} />{extra.rating.toFixed(1)}{extra.reviewCount ? ` · ${extra.reviewCount} Google reviews` : ""}</span> : null}{extra.phone && <a href={`tel:${extra.phone.replace(/[^+\d]/g, "")}`}><Phone size={16} /> {extra.phone}</a>}{listing.bookingUrl && <a href={`/api/directory/go?slug=${encodeURIComponent(slug)}`} target="_blank" rel="noreferrer"><CalendarCheck2 size={16} /> Book direct <ArrowUpRight size={15} /></a>}</div></div></section>
+    <section className="listing-hero"><div className="listing-hero__image" style={listing.imageUrl ? { backgroundImage: `url(${listing.imageUrl})` } : undefined}><span>{category.name}</span></div><div className="listing-hero__copy"><p className="eyebrow">{city.name} / {category.name}</p><h1>{listing.name}</h1>{isPremium && <p className="listing-featured-flag">Featured — this studio pays for placement</p>}<p className="listing-descriptor">{listing.descriptor || "An independently listed wellness place."}</p><p>{listing.description || "This profile is being thoughtfully completed by its owner."}</p><div className="listing-meta">{listing.neighbourhood && <span><MapPin size={16} />{listing.neighbourhood}</span>}{extra.rating ? <span><Star size={16} />{extra.rating.toFixed(1)}{extra.reviewCount ? ` · ${extra.reviewCount} Google reviews` : ""}</span> : null}{extra.phone && <a href={`tel:${extra.phone.replace(/[^+\d]/g, "")}`} onClick={() => trackEvent("call_click", { listing_slug: slug })}><Phone size={16} /> {extra.phone}</a>}{listing.bookingUrl && <a href={`/api/directory/go?slug=${encodeURIComponent(slug)}`} target="_blank" rel="noreferrer" onClick={() => trackEvent("outbound_click", { listing_slug: slug })}><CalendarCheck2 size={16} /> Book direct <ArrowUpRight size={15} /></a>}</div></div></section>
     <section className="listing-content-grid"><div><p className="eyebrow">The treatment list</p><h2>What you can book</h2><div className="service-list">{services.length ? services.map((service: any) => <article key={service.id}><div><h3>{service.title}</h3><p>{service.description}</p></div><div><span>{service.durationMinutes ? `${service.durationMinutes} min` : "By consultation"}</span>{service.priceFromCents ? <strong>from ${(service.priceFromCents / 100).toFixed(0)}</strong> : null}</div></article>) : <p className="subtle-copy">The studio’s service list is being added.</p>}</div></div><div className="listing-sidebar">{!isClaimed && <ClaimListingBox slug={listing.slug} lang={lang} />}<aside className="inquiry-box"><p className="eyebrow">Ask the desk</p><h2>A human introduction is a good place to start.</h2><form onSubmit={submit}><input required placeholder="Your name" value={form.name} onChange={event => setForm({ ...form, name: event.target.value })} /><input required type="email" placeholder="Email address" value={form.email} onChange={event => setForm({ ...form, email: event.target.value })} /><input placeholder="Phone, if you prefer" value={form.phone} onChange={event => setForm({ ...form, phone: event.target.value })} /><textarea required minLength={12} placeholder="Tell us what you are looking for" value={form.message} onChange={event => setForm({ ...form, message: event.target.value })} /><label className="consent-row"><input type="checkbox" checked={form.consentEmail} onChange={event => setForm({ ...form, consentEmail: event.target.checked })} /> I’m happy to hear from Quiet Hour by email.</label><label className="consent-row"><input type="checkbox" checked={form.consentSms} onChange={event => setForm({ ...form, consentSms: event.target.checked })} /> I’m happy to hear from Quiet Hour by SMS.</label><button className="dark-button" disabled={inquiry.isPending}>{inquiry.isPending ? "Sending…" : <><Send size={16} /> Send inquiry</>}</button></form><span className="inquiry-note"><Mail size={14} /> Consent is optional and recorded separately for each channel.</span></aside>{!isPremium && <PremiumPlacementBox slug={listing.slug} lang={lang} />}</div></section>
   </main><SiteFooter /></>;
 }
