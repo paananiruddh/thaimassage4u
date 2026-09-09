@@ -176,9 +176,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .place-card__image > span:not(.place-card__arrow) { position: absolute; left: 1.2rem; bottom: 1rem; color: white; font: 500 1.2rem/.95 var(--font-display); letter-spacing: -.035em; }
 .place-card__arrow { position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.84); color: var(--ink); transition: transform .2s ease; }
 .place-card:hover .place-card__arrow { transform: rotate(45deg); }
+.place-card__rating { position: absolute; top: 1rem; left: 1rem; display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .55rem; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink); font: 600 .72rem/1 var(--font-mono); }
+.place-card__rating svg { fill: currentColor; }
+.place-card__rating small { font-weight: 500; opacity: .65; }
 .place-card__copy { padding-top: 1rem; }
 .place-card__copy h3 { margin: -.55rem 0 .5rem; font: 500 1.7rem/1.05 var(--font-display); letter-spacing: -.04em; }
 .place-card__copy > p { min-height: 2.9em; margin: 0; color: #5d7066; font-size: .84rem; line-height: 1.55; }
+.place-card__meta { display: flex; flex-wrap: wrap; gap: 0 1rem; }
 .place-card__location { display: inline-flex; align-items: center; gap: .3rem; margin-top: .75rem; font: .62rem var(--font-mono); color: #73837a; letter-spacing: .04em; text-transform: uppercase; }
 .home-place-empty { grid-column: 1 / -1; padding: 3rem; border: 1px solid var(--border); background: #fffdf8; }
 .home-place-empty h3 { max-width: 520px; margin: .2rem 0 .8rem; font: 500 2rem/1 var(--font-display); letter-spacing: -.045em; }
