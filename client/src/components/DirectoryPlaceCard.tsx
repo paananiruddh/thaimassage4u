@@ -19,7 +19,7 @@ export function DirectoryPlaceCard({ place, index = 0 }: { place: any; index?: n
   return (
     <Link href={`/listing/${place.slug}`} className="place-card">
       <div className="place-card__image" style={visual}>
-        {!place.imageUrl && <span>Quiet Hour<br />listing</span>}
+        {!place.imageUrl && <span>Thai Massage<br />For U</span>}
         {typeof place.rating === "number" && (
           <span className="place-card__rating">
             <Star size={12} /> {place.rating.toFixed(1)}

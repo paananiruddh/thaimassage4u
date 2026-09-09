@@ -42,11 +42,21 @@ function CountrySwitcher({ mobile = false }: { mobile?: boolean }) {
   );
 }
 
+/**
+ * The domain (thaimassageforu.com) is an exact-match search query that the "Quiet Hour" wordmark
+ * used to bury entirely — a visitor landing from "thai massage" search results saw a brand name
+ * that confirmed nothing about what the site actually is. Leads with the name now; "Quiet Hour"
+ * stays as the smaller editorial identity underneath (still used that way in the journal), not
+ * gone, just no longer standing in for what the domain itself already tells a visitor.
+ */
 export function Wordmark({ inverted = false }: { inverted?: boolean }) {
   return (
-    <Link href="/" className={`inline-flex items-center gap-2 font-[var(--font-display)] text-[1.38rem] leading-none tracking-[-0.06em] ${inverted ? "text-[#f7f2e9]" : "text-[#19372f]"}`}>
+    <Link href="/" className={`inline-flex items-center gap-2 font-[var(--font-display)] leading-none tracking-[-0.06em] ${inverted ? "text-[#f7f2e9]" : "text-[#19372f]"}`}>
       <span className="waypoint-mark" aria-hidden="true"><i /><i /></span>
-      <span>quiet hour</span>
+      <span className="flex flex-col leading-[1.05]">
+        <span className="text-[1.15rem]">Thai Massage For U</span>
+        <span className="text-[0.62rem] uppercase tracking-[0.12em] opacity-60">Quiet Hour</span>
+      </span>
     </Link>
   );
 }
