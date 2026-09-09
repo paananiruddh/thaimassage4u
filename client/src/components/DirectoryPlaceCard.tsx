@@ -1,4 +1,4 @@
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone, Star } from "lucide-react";
 import { Link } from "wouter";
 
 const fallbacks = [
@@ -7,18 +7,34 @@ const fallbacks = [
   "linear-gradient(145deg, #c2d3ca 0%, #8da99a 100%)",
 ];
 
+/**
+ * worker/directory.ts's toPlaceCard() has returned rating, reviewCount and phone in every
+ * directory API response since before this file existed — none of it ever reached the actual
+ * card. City/country/directory grids read as a plain list of names because the one component
+ * every grid renders through never displayed the data it was already given. No new scraping or
+ * schema change needed here; this is entirely a "use what's already in the response" fix.
+ */
 export function DirectoryPlaceCard({ place, index = 0 }: { place: any; index?: number }) {
   const visual = place.imageUrl ? { backgroundImage: `url(${place.imageUrl})` } : { background: fallbacks[index % fallbacks.length] };
   return (
     <Link href={`/listing/${place.slug}`} className="place-card">
       <div className="place-card__image" style={visual}>
         {!place.imageUrl && <span>Quiet Hour<br />listing</span>}
+        {typeof place.rating === "number" && (
+          <span className="place-card__rating">
+            <Star size={12} /> {place.rating.toFixed(1)}
+            {place.reviewCount ? <small>({place.reviewCount})</small> : null}
+          </span>
+        )}
         <span className="place-card__arrow"><ArrowUpRight size={17} /></span>
       </div>
       <div className="place-card__copy">
         <div><p className="eyebrow">{place.categoryName || "Wellness"}</p><h3>{place.name}</h3></div>
         <p>{place.descriptor || "A considered wellness place."}</p>
-        {place.neighbourhood && <span className="place-card__location"><MapPin size={14} />{place.neighbourhood}</span>}
+        <div className="place-card__meta">
+          {place.neighbourhood && <span className="place-card__location"><MapPin size={14} />{place.neighbourhood}</span>}
+          {place.phone && <span className="place-card__location"><Phone size={14} />{place.phone}</span>}
+        </div>
       </div>
     </Link>
   );
