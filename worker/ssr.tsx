@@ -5,8 +5,12 @@ import { formatPremiumPrice, PREMIUM_TIERS } from "../shared/pricing";
 import { getArticle, getCityGuide, getCountryGuide, getDirectoryHome, getListing } from "./directory";
 import type { Env } from "./index";
 
-const siteName = "Quiet Hour";
-const defaultDescription = "A considered guide to wellness places, rituals, and city intelligence.";
+// The domain is an exact-match search query for "thai massage" — og:site_name and the default
+// meta description used to lead with "Quiet Hour" instead, which confirmed nothing to a visitor
+// arriving from that exact search. "Quiet Hour" is still the editorial voice (see the journal
+// nav links below, and Home.tsx's manifesto section), just not the name standing in for the site.
+const siteName = "Thai Massage For U";
+const defaultDescription = "A city-by-city directory of independently listed Thai massage studios, plus the wider wellness places worth knowing about.";
 const clean = (value: string, length: number) => Array.from(value.replace(/\s+/g, " ").trim()).slice(0, length).join("");
 const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 // [text](url) links are the one bit of real markdown article bodies use — mainly to link a
@@ -61,19 +65,19 @@ async function renderPublicBody(rawPath: string, env: Env) {
   if (articleMatch) {
     const article = await getArticle(env, articleMatch[1]);
     if (!article) return `<main class="worker-ssr"><h1>Page not found</h1><p>This article is not available.</p></main>`;
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/journal">Journal</a></nav><article><p class="eyebrow">${escape(String(article.topic ?? "Wellness"))}</p><h1>${escape(String(article.title))}</h1><p class="lede">${escape(String(article.excerpt ?? ""))}</p>${markdown(String(article.body ?? ""))}</article></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/journal">Journal</a></nav><article><p class="eyebrow">${escape(String(article.topic ?? "Wellness"))}</p><h1>${escape(String(article.title))}</h1><p class="lede">${escape(String(article.excerpt ?? ""))}</p>${markdown(String(article.body ?? ""))}</article></main>`;
   }
   const countryMatch = path.match(/^\/(us|uk|au|de)$/);
   if (countryMatch) {
     const guide = await getCountryGuide(env, countryMatch[1]);
     if (!guide) return `<main class="worker-ssr"><h1>Page not found</h1></main>`;
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a></nav><h1>Wellness in ${escape(guide.country.name)}</h1><ul>${guide.cities.map(city => `<li><a href="/city/${escape(city.slug)}">${escape(city.name)}</a></li>`).join("")}</ul><ul>${guide.listings.map(item => `<li><a href="/listing/${escape(item.slug)}">${escape(item.name)}</a></li>`).join("")}</ul></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a></nav><h1>Wellness in ${escape(guide.country.name)}</h1><ul>${guide.cities.map(city => `<li><a href="/city/${escape(city.slug)}">${escape(city.name)}</a></li>`).join("")}</ul><ul>${guide.listings.map(item => `<li><a href="/listing/${escape(item.slug)}">${escape(item.name)}</a></li>`).join("")}</ul></main>`;
   }
   const cityMatch = path.match(/^\/city\/([^/]+)$/);
   if (cityMatch) {
     const guide = await getCityGuide(env, cityMatch[1]);
     if (!guide) return `<main class="worker-ssr"><h1>Page not found</h1></main>`;
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a></nav><h1>${escape(guide.city.name)} wellness guide</h1><p>${escape(String(guide.city.introduction ?? ""))}</p><ul>${guide.listings.map(item => `<li><a href="/listing/${escape(item.slug)}">${escape(item.name)}</a></li>`).join("")}</ul></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a></nav><h1>${escape(guide.city.name)} wellness guide</h1><p>${escape(String(guide.city.introduction ?? ""))}</p><ul>${guide.listings.map(item => `<li><a href="/listing/${escape(item.slug)}">${escape(item.name)}</a></li>`).join("")}</ul></main>`;
   }
   const listingMatch = path.match(/^\/listing\/([^/]+)$/);
   if (listingMatch) {
@@ -88,26 +92,26 @@ async function renderPublicBody(rawPath: string, env: Env) {
       // only ever sees the trackable URL, not the bare bookingUrl.
       detail.listing.bookingUrl ? `<li><a href="/api/directory/go?slug=${escape(listingMatch[1])}" rel="nofollow noreferrer">Visit website</a></li>` : "",
     ].join("");
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a></nav><article><h1>${escape(detail.listing.name)}</h1><p>${escape(String(detail.listing.description ?? detail.listing.descriptor ?? ""))}</p><p><a href="/city/${escape(detail.city.slug)}">${escape(String(detail.city.name))}</a></p><ul>${facts}</ul><ul>${detail.services.map(item => `<li>${escape(item.title)}</li>`).join("")}</ul></article></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a></nav><article><h1>${escape(detail.listing.name)}</h1><p>${escape(String(detail.listing.description ?? detail.listing.descriptor ?? ""))}</p><p><a href="/city/${escape(detail.city.slug)}">${escape(String(detail.city.name))}</a></p><ul>${facts}</ul><ul>${detail.services.map(item => `<li>${escape(item.title)}</li>`).join("")}</ul></article></main>`;
   }
   if (path === "/list-your-place") {
     const tiers = (["city", "country"] as const).map(tier => `<li><strong>${escape(PREMIUM_TIERS[tier].label)}</strong> — ${escape(formatPremiumPrice(tier))}. ${escape(PREMIUM_TIERS[tier].description)}</li>`).join("");
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a></nav><h1>List your wellness studio</h1><p>Be found by people already looking for a treatment in your city. Paid placement is always labelled as featured.</p><ul>${tiers}</ul><p>Cancel anytime. Billed securely by Stripe.</p></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a></nav><h1>List your wellness studio</h1><p>Be found by people already looking for a treatment in your city. Paid placement is always labelled as featured.</p><ul>${tiers}</ul><p>Cancel anytime. Billed securely by Stripe.</p></main>`;
   }
   if (path === "/journal") {
     const home = await getDirectoryHome(env);
     const items = home.articles.map((item: any) => `<li><a href="/journal/${escape(String(item.slug))}">${escape(String(item.title))}</a> — ${escape(clean(String(item.excerpt ?? ""), 180))}</li>`).join("");
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a></nav><h1>Wellness journal</h1><ul>${items || "<li>Editorial notes are being prepared.</li>"}</ul></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a></nav><h1>Wellness journal</h1><ul>${items || "<li>Editorial notes are being prepared.</li>"}</ul></main>`;
   }
   if (path === "/directory") {
     const home = await getDirectoryHome(env);
     const cities = home.cities.map((city: any) => `<li><a href="/city/${escape(String(city.slug))}">${escape(String(city.name))}</a></li>`).join("");
     const places = home.listings.slice(0, 60).map((item: any) => `<li><a href="/listing/${escape(String(item.slug))}">${escape(String(item.name))}</a> — ${escape(String(item.cityName))}</li>`).join("");
-    return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/journal">Journal</a></nav><h1>Wellness directory</h1><h2>Cities</h2><ul>${cities}</ul><h2>Places</h2><ul>${places}</ul></main>`;
+    return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/journal">Journal</a></nav><h1>Wellness directory</h1><h2>Cities</h2><ul>${cities}</ul><h2>Places</h2><ul>${places}</ul></main>`;
   }
   const home = await getDirectoryHome(env);
   const journalItems = home.articles.slice(0, 3).map((item: any) => `<li><a href="/journal/${escape(String(item.slug))}">${escape(String(item.title))}</a></li>`).join("");
-  return `<main class="worker-ssr"><nav><a href="/">Quiet Hour</a><a href="/directory">Explore</a><a href="/journal">Journal</a><a href="/list-your-place">For studios</a></nav><section><p class="eyebrow">The considered city guide</p><h1>Find your <em>quiet</em> in the city.</h1><p>${defaultDescription}</p><a href="/directory">Explore the directory</a></section><section><h2>Latest field notes</h2><ul>${journalItems || "<li>Editorial notes are being prepared.</li>"}</ul></section></main>`;
+  return `<main class="worker-ssr"><nav><a href="/">Thai Massage For U</a><a href="/directory">Explore</a><a href="/journal">Journal</a><a href="/list-your-place">For studios</a></nav><section><p class="eyebrow">Thai Massage For U</p><h1>Find exceptional <em>Thai massage</em> near you.</h1><p>${defaultDescription}</p><a href="/directory">Explore the directory</a></section><section><h2>Latest field notes</h2><ul>${journalItems || "<li>Editorial notes are being prepared.</li>"}</ul></section></main>`;
 }
 
 function isAssetPath(pathname: string) {
@@ -168,7 +172,7 @@ export async function serveWorkerPage(request: Request, env: Env) {
     return new Response(document, { status: head.notFound ? 404 : 200, headers: { "content-type": "text/html; charset=UTF-8", "cache-control": "no-cache" } });
   } catch (error) {
     console.error("[Worker SSR]", error);
-    const fallback = template.replace("</head>", `${renderHead({ title: "Quiet Hour — Find your place in the city", description: defaultDescription, canonicalPath: "/" }, env.SITE_URL.replace(/\/$/, ""))}</head>`);
+    const fallback = template.replace("</head>", `${renderHead({ title: "Thai Massage For U — Find exceptional Thai massage near you", description: defaultDescription, canonicalPath: "/" }, env.SITE_URL.replace(/\/$/, ""))}</head>`);
     return new Response(fallback, { status: 200, headers: { "content-type": "text/html; charset=UTF-8", "cache-control": "no-cache" } });
   }
 }

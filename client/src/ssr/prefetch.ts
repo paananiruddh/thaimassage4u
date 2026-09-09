@@ -25,8 +25,12 @@ export type SsrPrefetch = {
   countryBySlug: (code: string) => Promise<Outputs["directory"]["countryBySlug"]>;
 };
 
-const SITE = "Quiet Hour";
-const DEFAULT_DESCRIPTION = "A considered guide to wellness places, rituals, and city intelligence.";
+// The domain is an exact-match search query for "thai massage" — every title on the site used to
+// suffix "— Quiet Hour" instead, confirming nothing to a visitor arriving from that exact search.
+// "Quiet Hour" stays the editorial voice (the journal's own tone, Home.tsx's manifesto section),
+// not the name standing in for what the site is.
+const SITE = "Thai Massage For U";
+const DEFAULT_DESCRIPTION = "A city-by-city directory of independently listed Thai massage studios, plus the wider wellness places worth knowing about.";
 
 function seeded(queryClient: QueryClient, key: unknown, value: unknown) {
   (queryClient as any).setQueryData(key, value);
@@ -46,9 +50,9 @@ export async function prefetchForPath(url: string, queryClient: QueryClient, pre
   try { rawPath = decodeURI(rawPath); } catch { /* preserve malformed path */ }
   const path = rawPath.replace(/\/+$/, "") || "/";
   const homeRoutes: Record<string, { title: string; description: string }> = {
-    "/": { title: "Quiet Hour — Find your place in the city", description: DEFAULT_DESCRIPTION },
-    "/directory": { title: "Wellness directory — Quiet Hour", description: "Explore independently listed wellness places by city, treatment, and the feeling you want to leave with." },
-    "/journal": { title: "Wellness journal — Quiet Hour", description: "Practical pieces on mindfulness, massage, circulation, and feeling better in your body." },
+    "/": { title: `${SITE} — Find exceptional Thai massage near you`, description: DEFAULT_DESCRIPTION },
+    "/directory": { title: `Thai Massage Directory — ${SITE}`, description: "Explore independently listed Thai massage studios and wellness places by city, treatment, and the feeling you want to leave with." },
+    "/journal": { title: `Wellness journal — ${SITE}`, description: "Practical pieces on mindfulness, massage, circulation, and feeling better in your body." },
   };
   if (homeRoutes[path]) {
     const data = await prefetch.home();
@@ -57,11 +61,11 @@ export async function prefetchForPath(url: string, queryClient: QueryClient, pre
     return { ...homeRoutes[path], canonicalPath: path, jsonLd, alternates: [{ locale: "en", path }] };
   }
   if (path === "/list-your-place") {
-    return { title: "List your wellness studio — Quiet Hour", description: "A considered listing for independent wellness studios, therapists, and recovery spaces.", canonicalPath: path, alternates: [{ locale: "en", path }] };
+    return { title: `List your wellness studio — ${SITE}`, description: "A considered listing for independent wellness studios, therapists, and recovery spaces.", canonicalPath: path, alternates: [{ locale: "en", path }] };
   }
   if (path === "/coming-soon") {
     // A roadmap teaser with no standalone search value — kept reachable, kept out of the index.
-    return { title: "What we're building next — Quiet Hour", description: "AI booking, deposit collection, and more on the Quiet Hour roadmap.", canonicalPath: path, noindex: true };
+    return { title: `What we're building next — ${SITE}`, description: "AI booking, deposit collection, and more on the roadmap.", canonicalPath: path, noindex: true };
   }
   const country = path.match(/^\/(us|uk|au|de|ca|nz|ie|ae)$/);
   if (country) {
@@ -132,7 +136,7 @@ export async function prefetchForPath(url: string, queryClient: QueryClient, pre
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Quiet Hour", item: "https://thaimassageforu.com/" },
+        { "@type": "ListItem", position: 1, name: SITE, item: "https://thaimassageforu.com/" },
         { "@type": "ListItem", position: 2, name: data.city.name, item: `https://thaimassageforu.com/city/${data.city.slug}` },
         { "@type": "ListItem", position: 3, name: data.listing.name, item: `https://thaimassageforu.com${path}` },
       ],
